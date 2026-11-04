@@ -12,9 +12,13 @@ Main.java -> Define an Enum to keep track of what mode the calculator is in rath
 
 Methods 
 add(double x, double y) -> should add the two numbers
+
 subtract(double x, double y) -> should subtract the two numbers
+
 multiply(double x, double y) -> should multiply the two numbers
+
 divide(double x, double y) -> should divide the two numbers
+
 format(double x) -> should format a the number, for the "standard" calculator it should round the number to the nearest 3 decimal places. For the "scientific" calculator it should format the number into scientific notation to the nearest 3 decimal places.
 
 Submission:
@@ -23,12 +27,12 @@ Submit the 4 files: Calculator.java, StandardCalculator.java, ScientificCalculat
 Example input:
 
 What mode do you want (N)ormal or (S)cientific:
->>S
+S
 Operation? (A)ddition, (S)ubtraction, (M)ultiplication, or (D)ivision:
->>M
+M
 First number?
->>22.9
+22.9
 Second Number?
->>92039093
+92039093
 Answer: 2.108 * 10^9, Again? (Y)es or (N)o
->>N
+N

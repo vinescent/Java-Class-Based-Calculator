@@ -4,24 +4,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         
-        enum type {STANDARD, SCIENTIFIC}
+        enum calcMode {STANDARD, SCIENTIFIC}
+        calcMode type;
+
         boolean repeat = true;
         
         while(repeat) {
             System.out.print("What mode do you want (N)ormal or (S)cientific: ");
             String mode = kb.nextLine();
 
-            switch(mode) {
+            switch (mode) {
                 case "N":
-                    type = STANDARD;
+                    type = calcMode.STANDARD;
                     break;
                 case "S":
-                    type = SCIENTIFIC;
+                    type = calcMode.SCIENTIFIC;
                     break;
                 default:
+                    System.out.println("Invalid mode. Please try again.");
                     continue;
-                    break;
-            }
+                }
 
 //            if(mode.equals(N)) {
 //                type = STANDARD;
@@ -40,6 +42,31 @@ public class Main {
             System.out.print("\nSecond Number? ");
             double y = kb.nextDouble();
 
+            switch (operation) {
+                case "A":
+                    
+                    break;
+                case "S":
+
+                    break;
+                case "M":
+
+                    break;
+                case "D":
+
+                    break;
+                default:
+                    
+                    continue;
+            }
+
+            System.out.print("\n");
+
+//            Attempt at switch expression
+/*            String answer = switch (operation) {
+                case1 -> add(x, y);
+                
+            }*/
             
         }
     }

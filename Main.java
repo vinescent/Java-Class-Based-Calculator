@@ -1,15 +1,15 @@
 import java.util.Scanner;
 
 public class Main {
-    public void main(String[] args) {
+    public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         
         enum type {STANDARD, SCIENTIFIC}
-        boolean repeat = 1;
+        boolean repeat = true;
         
         while(repeat) {
             System.out.print("What mode do you want (N)ormal or (S)cientific: ");
-            String mode = kb.nextString;
+            String mode = kb.nextLine();
 
             switch(mode) {
                 case "N":
@@ -32,37 +32,15 @@ public class Main {
 //            }
 
             System.out.print("\nOperation? (A)ddition, (S)ubtraction, (M)ultiplication, or (D)ivision: ");
-            String operation = kb.nextString;
+            String operation = kb.nextLine();
 
             System.out.print("\nFirst number? ");
-            double x = kb.nextDouble;
+            double x = kb.nextDouble();
 
             System.out.print("\nSecond Number? ");
-            double y = kb.nextDouble;
+            double y = kb.nextDouble();
 
-            switch(operation) {
-                case "A":
-                    System.out.println("Result: " + (x + y));
-                    break;
-                case "S":
-                    System.out.println("Result: " + (x - y));
-                    break;
-                case "M":
-                    System.out.println("Result: " + (x * y));
-                    break;
-                case "D":
-                    if(y != 0) {
-                        System.out.println("Result: " + (x / y));
-                    } else {
-                        System.out.println("Error: Division by zero");
-                        continue;
-                    }
-                    break;
-                default:
-                    System.out.println("Error: Invalid operation");
-                    continue;
-                    break;
-            }
+            
         }
     }
 }

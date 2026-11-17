@@ -65,19 +65,16 @@ public class Main {
                     continue;
             }
 
-            System.out.print("\nAnswer: " + calc.format(answer) + "\n\nAgain? (Y)es or (N)o: ");
-            repeat = kb.nextLine().toUpperCase().equals("Y");
+            System.out.print("\nAnswer: " + calc.format(answer));
 
             String again;
 
-            do { 
+            do {
                 System.out.print("\nAgain? (Y)es or (N)o: ");
                 again = kb.nextLine().trim().toUpperCase();
+            } while (!again.equals("Y") && !again.equals("N"));
 
-                if (!again.equal)
-
-            } while (!again.equals);
-
+            repeat = again.equals("Y");
         }
 
         System.out.println("Program stopped.");

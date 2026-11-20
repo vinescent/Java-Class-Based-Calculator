@@ -92,7 +92,7 @@ public class Main {
 
                 System.out.println("Please enter a finite number.");
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number. Please enter a number like 12 or 3.5.");
+                System.out.println("Invalid number, please try again.");
             }
         }
     }

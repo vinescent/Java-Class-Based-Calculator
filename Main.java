@@ -1,45 +1,44 @@
 import java.util.Scanner;
 
 public class Main {
+    private enum CalcMode {
+        STANDARD, SCIENTIFIC
+    }
+
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
-        
-        enum calcMode {STANDARD, SCIENTIFIC}
-        calcMode type;
 
         boolean repeat = true;
 
-        Calculator calc;
+        while (repeat) {
+            Calculator calc;
+            CalcMode type;
 
-        while(repeat) {
             System.out.print("What mode do you want (N)ormal or (S)cientific: ");
-            String mode = kb.nextLine().toUpperCase();
+            String mode = kb.nextLine().trim().toUpperCase();
 
             switch (mode) {
                 case "N":
                     calc = new StandardCalculator();
-                    type = calcMode.STANDARD;
+                    type = CalcMode.STANDARD;
                     break;
                 case "S":
                     calc = new ScientificCalculator();
-                    type = calcMode.SCIENTIFIC;
+                    type = CalcMode.SCIENTIFIC;
                     break;
                 default:
                     System.out.println("Invalid mode. Please try again.");
                     continue;
             }
 
-            System.out.print("\nOperation? (A)ddition, (S)ubtraction, (M)ultiplication, or (D)ivision: ");
-            String operation = kb.nextLine().toUpperCase();
+            System.out.print(
+                "\nOperation? (A)ddition, (S)ubtraction, (M)ultiplication, or (D)ivision: "
+            );
+            String operation = kb.nextLine().trim().toUpperCase();
 
-            System.out.print("\nFirst number? ");
-            double x = kb.nextDouble();
+            double x = readDouble(kb, "\nFirst number? ");
+            double y = readDouble(kb, "\nSecond number? ");
 
-            System.out.print("\nSecond Number? ");
-            double y = kb.nextDouble();
-
-            kb.nextLine(); // Consume the leftover newline
-            
             double answer;
 
             switch (operation) {
@@ -57,7 +56,6 @@ public class Main {
                         System.out.println("Error: Division by zero is not allowed.");
                         continue;
                     }
-                    
                     answer = calc.divide(x, y);
                     break;
                 default:
@@ -65,10 +63,9 @@ public class Main {
                     continue;
             }
 
-            System.out.print("\nAnswer: " + calc.format(answer));
+            System.out.println("\nAnswer: " + calc.format(answer));
 
             String again;
-
             do {
                 System.out.print("\nAgain? (Y)es or (N)o: ");
                 again = kb.nextLine().trim().toUpperCase();
@@ -78,5 +75,25 @@ public class Main {
         }
 
         System.out.println("Program stopped.");
+        kb.close();
+    }
+
+    private static double readDouble(Scanner kb, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String input = kb.nextLine();
+
+            try {
+                double number = Double.parseDouble(input);
+
+                if (Double.isFinite(number)) {
+                    return number;
+                }
+
+                System.out.println("Please enter a finite number.");
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number. Please enter a number like 12 or 3.5.");
+            }
+        }
     }
 }
